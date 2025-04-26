@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GlowStream's Server Rules</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-y: scroll;
+            font-family: 'Orbitron', sans-serif;
+            color: #ffffff;
+            background: linear-gradient(270deg, #ff0080, #7928ca, #2af598, #009efd);
+            background-size: 800% 800%;
+            animation: gradientMove 20s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 50px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px #00ffea, 0 0 30px #00ffea;
+        }
+
+        .rules-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 900px;
+            margin: auto;
+            box-shadow: 0 0 30px rgba(0, 255, 234, 0.5);
+        }
+
+        .rule {
+            background-color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        .rule span {
+            color: #00ffee;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #bbb;
+            padding-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>GlowStream's Server Rules</h1>
+
+    <div class="rules-container">
+        <!-- 40 RULES START -->
+        <div class="rule"><span>1.</span> Be respectful to all members.</div>
+        <div class="rule"><span>2.</span> No bullying or disrespect.</div>
+        <div class="rule"><span>3.</span> Keep it safe for work (no NSFW content).</div>
+        <div class="rule"><span>4.</span> No spamming or flooding chat.</div>
+        <div class="rule"><span>5.</span> Keep discussions in the correct channels.</div>
+        <div class="rule"><span>6.</span> No self-promotion anywhere.</div>
+        <div class="rule"><span>7.</span> Respect mods and admins.</div>
+        <div class="rule"><span>8.</span> Follow Discord ToS and Community Guidelines.</div>
+        <div class="rule"><span>9.</span> Do not share private information.</div>
+        <div class="rule"><span>10.</span> No loud or disruptive noises in VC.</div>
+        <div class="rule"><span>11.</span> No drama or toxic behavior.</div>
+        <div class="rule"><span>12.</span> Use appropriate usernames and avatars.</div>
+        <div class="rule"><span>13.</span> English language only unless specified.</div>
+        <div class="rule"><span>14.</span> No mini-modding (let staff handle problems).</div>
+        <div class="rule"><span>15.</span> No impersonating staff or other members.</div>
+        <div class="rule"><span>16.</span> No illegal activities or discussions.</div>
+        <div class="rule"><span>17.</span> Keep memes and media appropriate.</div>
+        <div class="rule"><span>18.</span> No server raiding or threats.</div>
+        <div class="rule"><span>19.</span> Don’t abuse bots or commands.</div>
+        <div class="rule"><span>20.</span> Respect everyone’s opinion.</div>
+        <div class="rule"><span>21.</span> No harmful, offensive, or discriminatory behavior.</div>
+        <div class="rule"><span>22.</span> Don’t ghost ping others.</div>
+        <div class="rule"><span>23.</span> No talking over streamers in VC.</div>
+        <div class="rule"><span>24.</span> Don’t ask for free giveaways repeatedly.</div>
+        <div class="rule"><span>25.</span> Use spoiler tags when needed.</div>
+        <div class="rule"><span>26.</span> Keep politics and religion out of chat.</div>
+        <div class="rule"><span>27.</span> Respect streamers’ or YouTubers’ recording sessions.</div>
+        <div class="rule"><span>28.</span> No copy-pasta spam.</div>
+        <div class="rule"><span>29.</span> Music bots only in music VCs.</div>
+        <div class="rule"><span>30.</span> Content must follow YouTube policies if linked.</div>
+        <div class="rule"><span>31.</span> No ear-rape or mic spamming.</div>
+        <div class="rule"><span>32.</span> Handle disputes privately with staff.</div>
+        <div class="rule"><span>33.</span> No bypassing word filters.</div>
+        <div class="rule"><span>34.</span> Stay positive and friendly!</div>
+        <div class="rule"><span>35.</span> Give constructive feedback.</div>
+        <div class="rule"><span>36.</span> Respect everyone’s time in events or games.</div>
+        <div class="rule"><span>37.</span> Do not leak or record without permission.</div>
+        <div class="rule"><span>38.</span> Voice changers are allowed only if not disruptive.</div>
+        <div class="rule"><span>39.</span> Have fun and support each other!</div>
+        <!-- New rules -->
+        <div class="rule"><span>40.</span> To report any issues, head to #report.</div>
+        <div class="rule"><span>41.</span> Need assistance? Visit #support for help.</div>
+        <!-- 40 RULES END -->
+    </div>
+
+    <footer>
+        &copy; 2025 GlowStream's Server. Level up every day!
+    </footer>
+
+</body>
+</html>
