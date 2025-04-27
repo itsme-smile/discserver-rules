@@ -2,246 +2,220 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GlowStream's Server Rules</title>
+  <title>GlowStream's Server Rules</n></title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
-    body {
+    body, html {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      overflow-y: scroll;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
       font-family: 'Orbitron', sans-serif;
-      color: #ffffff;
-      background: linear-gradient(270deg, #ff0080, #7928ca, #2af598, #009efd);
-      background-size: 800% 800%;
-      animation: gradientMove 20s ease infinite;
+      background: linear-gradient(135deg, #8e2de2, #ff0080);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       text-align: center;
-      overflow-x: hidden;
+      position: relative;
     }
 
-    @keyframes gradientMove {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    h1 {
-      font-size: 50px;
-      margin-top: 40px;
-      margin-bottom: 40px;
-      text-shadow: 0 0 20px #00ffea, 0 0 30px #00ffea;
-    }
-
-    .rules-container {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 900px;
-      margin: auto;
-      box-shadow: 0 0 30px rgba(0, 255, 234, 0.5);
-      text-align: left;
-    }
-
-    .rule {
-      background-color: rgba(255, 255, 255, 0.1);
-      margin-bottom: 15px;
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 18px;
-    }
-
-    .rule span {
-      color: #00ffee;
-      font-weight: bold;
-    }
-
-    .reminder {
-      margin-top: 30px;
-      font-size: 20px;
-      color: #00ffee;
-      animation: blink 1.5s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    #agree-section {
-      margin-top: 40px;
-      margin-bottom: 30px;
-    }
-
-    #agreeButton {
-      padding: 15px 30px;
-      font-size: 20px;
-      background: gray;
+    #rules, #final-step {
+      z-index: 1;
       color: white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    #rules h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00ffee;
+    }
+
+    #rules ul {
+      list-style: none;
+      padding: 0;
+      font-size: 18px;
+      max-height: 400px;
+      overflow-y: scroll;
+      margin: 0;
+    }
+
+    #rules ul li {
+      margin: 10px 0;
+    }
+
+    #agree-btn {
+      margin-top: 20px;
+      padding: 10px 30px;
+      font-size: 20px;
       border: none;
+      background-color: #00ffee;
+      color: black;
       border-radius: 10px;
-      cursor: not-allowed;
-      box-shadow: 0 0 10px #000;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffee;
       transition: 0.3s;
     }
 
-    #agreeButton.active {
-      background: linear-gradient(45deg, #00ffea, #009efd);
-      box-shadow: 0 0 20px #00ffee;
-      cursor: pointer;
+    #agree-btn:hover {
+      background-color: #00ccff;
+    }
+
+    #particles-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    #final-step {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #final-text {
+      font-size: 50px;
+      color: #00ffee;
+      text-shadow: 0 0 15px #00ffee, 0 0 25px #00ffee;
+      margin-bottom: 30px;
+    }
+
+    #server-image {
+      opacity: 0;
+      max-width: 300px;
+      border-radius: 20px;
+      transition: opacity 2s ease;
+      margin: 20px auto 0;
+      display: block;
+    }
+
+    #server-name {
+      margin-top: 15px;
+      font-size: 24px;
+      color: #00ffee;
+      text-shadow: 0 0 8px #00ffee;
     }
 
     footer {
-      margin-top: 30px;
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
       font-size: 14px;
       color: #bbb;
-      padding-bottom: 30px;
-    }
-
-    #doneMessage {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 50px;
-      font-weight: bold;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 3px solid #00ffea;
-      width: fit-content;
-      background: linear-gradient(90deg, #ff0080, #7928ca, #2af598, #009efd, #ff0080);
-      background-size: 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      z-index: 999;
     }
   </style>
 </head>
 <body>
 
-  <h1>GlowStream's Server Rules</h1>
+  <div id="particles-js"></div>
 
-  <div class="reminder" id="scrollReminder">Scroll down and please read the rules!</div>
-
-  <div class="rules-container" id="rulesContainer">
-    <!-- 41 RULES START -->
-    <div class="rule"><span>1.</span> Be respectful to all members.</div>
-    <div class="rule"><span>2.</span> No bullying or harassment.</div>
-    <div class="rule"><span>3.</span> Keep it safe for work (no NSFW content).</div>
-    <div class="rule"><span>4.</span> No spamming or flooding the chat.</div>
-    <div class="rule"><span>5.</span> Stay on topic; use correct channels.</div>
-    <div class="rule"><span>6.</span> No self-promotion outside #promo.</div>
-    <div class="rule"><span>7.</span> Respect moderators and admins.</div>
-    <div class="rule"><span>8.</span> Follow Discord Terms of Service and Guidelines.</div>
-    <div class="rule"><span>9.</span> Protect your private information.</div>
-    <div class="rule"><span>10.</span> No loud or disturbing sounds in VC.</div>
-    <div class="rule"><span>11.</span> Avoid toxic behavior and drama.</div>
-    <div class="rule"><span>12.</span> Keep usernames and avatars appropriate.</div>
-    <div class="rule"><span>13.</span> English only unless allowed.</div>
-    <div class="rule"><span>14.</span> No mini-modding (let staff manage).</div>
-    <div class="rule"><span>15.</span> Don’t impersonate others or staff.</div>
-    <div class="rule"><span>16.</span> No illegal activities allowed.</div>
-    <div class="rule"><span>17.</span> Keep memes/media suitable.</div>
-    <div class="rule"><span>18.</span> No raiding, threats, or attacks.</div>
-    <div class="rule"><span>19.</span> Respect bots; no abuse of commands.</div>
-    <div class="rule"><span>20.</span> Respect all opinions.</div>
-    <div class="rule"><span>21.</span> No hateful or offensive behavior.</div>
-    <div class="rule"><span>22.</span> No ghost pinging people.</div>
-    <div class="rule"><span>23.</span> Don’t talk over streamers in VC.</div>
-    <div class="rule"><span>24.</span> Don’t beg for free giveaways.</div>
-    <div class="rule"><span>25.</span> Use spoiler tags for spoilers.</div>
-    <div class="rule"><span>26.</span> No political or religious debates.</div>
-    <div class="rule"><span>27.</span> Respect recording/streaming sessions.</div>
-    <div class="rule"><span>28.</span> No copy-pasta or spam walls.</div>
-    <div class="rule"><span>29.</span> Music bots only in music channels.</div>
-    <div class="rule"><span>30.</span> Linked content must be safe.</div>
-    <div class="rule"><span>31.</span> No mic spam or ear-rape.</div>
-    <div class="rule"><span>32.</span> Settle disputes privately with staff.</div>
-    <div class="rule"><span>33.</span> Don’t bypass chat filters.</div>
-    <div class="rule"><span>34.</span> Stay positive and friendly!</div>
-    <div class="rule"><span>35.</span> Give feedback constructively.</div>
-    <div class="rule"><span>36.</span> Respect everyone's time during events.</div>
-    <div class="rule"><span>37.</span> No leaking/recording without permission.</div>
-    <div class="rule"><span>38.</span> Voice changers allowed only if not annoying.</div>
-    <div class="rule"><span>39.</span> Support each other and have fun!</div>
-    <div class="rule"><span>40.</span> To report anything, visit #report channel.</div>
-    <div class="rule"><span>41.</span> Need help? Go to #support for assistance.</div>
-    <!-- 41 RULES END -->
+  <div id="rules">
+    <h1>GlowStream's Server Rules</h1>
+    <ul>
+      <li>1. Be respectful to all members.</li>
+      <li>2. No bullying or disrespect.</li>
+      <li>3. Keep it safe for work (no NSFW content).</li>
+      <li>4. No spamming or flooding chat.</li>
+      <li>5. Keep discussions in the correct channels.</li>
+      <li>6. No self-promotion anywhere.</li>
+      <li>7. Respect mods and admins.</li>
+      <li>8. Follow Discord ToS and Community Guidelines.</li>
+      <li>9. Do not share private information.</li>
+      <li>10. No loud or disruptive noises in VC.</li>
+      <li>11. No drama or toxic behavior.</li>
+      <li>12. Use appropriate usernames and avatars.</li>
+      <li>13. English language only unless specified.</li>
+      <li>14. No mini-modding (let staff handle problems).</li>
+      <li>15. No impersonating staff or other members.</li>
+      <li>16. No illegal activities or discussions.</li>
+      <li>17. Keep memes and media appropriate.</li>
+      <li>18. No server raiding or threats.</li>
+      <li>19. Don’t abuse bots or commands.</li>
+      <li>20. Respect everyone’s opinion.</li>
+      <li>21. No harmful, offensive, or discriminatory behavior.</li>
+      <li>22. Don’t ghost ping others.</li>
+      <li>23. No talking over streamers in VC.</li>
+      <li>24. Don’t ask for free giveaways repeatedly.</li>
+      <li>25. Use spoiler tags when needed.</li>
+      <li>26. Keep politics and religion out of chat.</li>
+      <li>27. Respect streamers’ or YouTubers’ recording sessions.</li>
+      <li>28. No copy-pasta spam.</li>
+      <li>29. Music bots only in music VCs.</li>
+      <li>30. Content must follow YouTube policies if linked.</li>
+      <li>31. No ear-rape or mic spamming.</li>
+      <li>32. Handle disputes privately with staff.</li>
+      <li>33. No bypassing word filters.</li>
+      <li>34. Stay positive and friendly!</li>
+      <li>35. Give constructive feedback.</li>
+      <li>36. Respect everyone’s time in events or games.</li>
+      <li>37. Do not leak or record without permission.</li>
+      <li>38. Voice changers are allowed only if not disruptive.</li>
+      <li>39. Have fun and support each other!</li>
+      <li>40. To report any issues, head to #report.</li>
+      <li>41. Need assistance? Visit #support for help.</li>
+    </ul>
+    <button id="agree-btn">I Agree</button>
   </div>
 
-  <div id="agree-section">
-    <button id="agreeButton" disabled>I Agree</button>
+  <div id="final-step">
+    <div id="final-text"></div>
+    <img id="server-image" src="https://media-hosting.imagekit.io/69bdb349cb00403e/Screenshot%202025-03-08%20140025.png?Expires=1840369525&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=HrdcvLn4DVNfaPGGRXpry9wouO3WMZQBtRGb~R1BR-NyVH3~ClvSkwRevc1PB0qO-WicqM5LYZvVaTHCRwalstlHB8Zmd7e3jOxFSCCcS4VnRuvIuvWsl1evdZqXm-ooptNy-rCstoULyMR3K3XjSVXNsXwQ3qGjDsDnbvyTN5GWju3BKwvy7~veaUXgjB6LECNarLPS9gxGocbuCnLUaj8BmDK7z-FyggRab7YpHxbIcoyCkvz32PEBDCrZXJTv2vYI2HKuoiLRKa7L-WZ5LYah-XtEg2zYRu8olE0qJ2pTHnLuAWhrCs7HN-BlbIASRqZujJOBFb3orWSvCfWg2A__" alt="GlowStream's Server">
+    <div id="server-name">GlowStream's Server</div>
   </div>
 
-  <footer>
-    &copy; 2025 GlowStream's Server. Level up every day!
-  </footer>
+  <footer>&copy; 2025 GlowStream's Server. Level up every day!</footer>
 
-  <div id="doneMessage"></div>
-
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script>
-    const agreeButton = document.getElementById('agreeButton');
-    const scrollReminder = document.getElementById('scrollReminder');
-    const doneMessage = document.getElementById('doneMessage');
-    const rulesContainer = document.getElementById('rulesContainer');
-
-    window.addEventListener('scroll', () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 10) {
-        agreeButton.classList.add('active');
-        agreeButton.disabled = false;
-        scrollReminder.style.display = 'none';
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: ["#00ffee","#ff00ff","#00ccff","#ffff00"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.7 },
+        size: { value: 3 },
+        move: { enable: true, speed: 2 }
       }
     });
 
-    agreeButton.addEventListener('click', () => {
-      document.body.innerHTML = '';
-      document.body.appendChild(doneMessage);
-      doneMessage.style.display = 'block';
-      typeWriterEffect();
-    });
+    const agreeBtn = document.getElementById("agree-btn");
+    const rulesDiv = document.getElementById("rules");
+    const finalStep = document.getElementById("final-step");
+    const finalText = document.getElementById("final-text");
+    const serverImage = document.getElementById("server-image");
 
-    function typeWriterEffect() {
-      const text1 = "You're Done!";
-      const text2 = "Enjoy!";
+    agreeBtn.onclick = function() {
+      rulesDiv.style.display = 'none';
+      finalStep.style.display = 'flex';
+      typeText("You're Done!", function() {
+        setTimeout(function() { finalText.textContent = 'Enjoy!'; }, 3000);
+        setTimeout(function() { serverImage.style.opacity = 1; }, 5000);
+        setTimeout(function() { window.location.href = 'https://discord.gg/hpURdETPDz'; }, 8000);
+      });
+    };
+
+    function typeText(text, callback) {
       let i = 0;
-
-      function typeText(text, callback) {
-        if (i < text.length) {
-          doneMessage.textContent += text.charAt(i);
-          i++;
-          setTimeout(() => typeText(text, callback), 100);
-        } else {
-          if (callback) setTimeout(callback, 3000);
-        }
-      }
-
-      function deleteText(callback) {
-        if (i > 0) {
-          doneMessage.textContent = doneMessage.textContent.substring(0, i - 1);
-          i--;
-          setTimeout(() => deleteText(callback), 50);
-        } else {
+      finalText.textContent = '';
+      let interval = setInterval(function() {
+        finalText.textContent += text[i++];
+        if (i >= text.length) {
+          clearInterval(interval);
           if (callback) callback();
         }
-      }
-
-      function typeSecondText() {
-        i = 0;
-        typeText(text2);
-      }
-
-      typeText(text1, () => {
-        deleteText(typeSecondText);
-      });
+      }, 100);
     }
-
-    window.onbeforeunload = function (e) {
-      if (agreeButton.disabled) {
-        e.preventDefault();
-        e.returnValue = 'Please scroll down and read the rules before leaving!';
-      }
-    };
   </script>
 
 </body>
